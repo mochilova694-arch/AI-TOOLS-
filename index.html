@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tools</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 22px;
+      background: #080b18;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header { text-align: center; margin: 18px 0 28px; }
+    h1 {
+      font-size: 34px;
+      margin: 0;
+      background: linear-gradient(90deg,#20d9ff,#a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    header p { color: #9ba6c5; }
+    .profile {
+      background: #141a30;
+      padding: 16px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+    h2 { font-size: 19px; }
+    .tools {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+    .tool {
+      background: #141a30;
+      border: 1px solid #293456;
+      border-radius: 17px;
+      padding: 18px 12px;
+      color: white;
+      text-align: left;
+      cursor: pointer;
+      min-height: 115px;
+    }
+    .tool:active { border-color: #20d9ff; }
+    .emoji { font-size: 27px; }
+    .tool h3 { margin: 10px 0 5px; }
+    .tool p { color: #9ba6c5; font-size: 12px; margin: 0; }
+    .premium {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 17px;
+      background: linear-gradient(120deg,#342078,#123b70);
+    }
+    .premium button {
+      background: #20d9ff;
+      border: 0;
+      padding: 11px 17px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    #message {
+      margin-top: 20px;
+      color: #20d9ff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI TOOLS</h1>
+    <p>Sun'iy intellekt — barchasi bir joyda</p>
+  </header>
+
+  <div class="profile">
+    👤 Xush kelibsiz!
+    <p style="color:#9ba6c5;margin-bottom:0">AI Tools platformasiga xush kelibsiz.</p>
+  </div>
+
+  <h2>🚀 AI vositalari</h2>
+
+  <div class="tools">
+    <button class="tool" onclick="openTool('AI Chat')">
+      <span class="emoji">🤖</span>
+      <h3>AI Chat</h3>
+      <p>Sun'iy intellekt bilan suhbat</p>
+    </button>
+
+    <button class="tool" onclick="openTool('AI Writer')">
+      <span class="emoji">✍️</span>
+      <h3>AI Writer</h3>
+      <p>Matn va hikoyalar yozish</p>
+    </button>
+
+    <button class="tool" onclick="openTool('AI Image')">
+      <span class="emoji">🎨</span>
+      <h3>AI Image</h3>
+      <p>Rasm yaratish</p>
+    </button>
+
+    <button class="tool" onclick="openTool('Translator')">
+      <span class="emoji">🌍</span>
+      <h3>Translator</h3>
+      <p>Tarjima qilish</p>
+    </button>
+
+    <button class="tool" onclick="openTool('AI Coder')">
+      <span class="emoji">💻</span>
+      <h3>AI Coder</h3>
+      <p>Kod yozishda yordam</p>
+    </button>
+
+    <button class="tool" onclick="openTool('YouTube Assistant')">
+      <span class="emoji">▶️</span>
+      <h3>YouTube AI</h3>
+      <p>Video sarlavha va ssenariy</p>
+    </button>
+  </div>
+
+  <div class="premium">
+    <h2>⭐ AI Tools Premium</h2>
+    <p>Kelajakda qo‘shimcha imkoniyatlar shu yerda bo‘ladi.</p>
+    <button onclick="openTool('Premium')">Batafsil</button>
+  </div>
+
+  <div id="message"></div>
+
+  <script>
+    const tg = window.Telegram?.WebApp;
+    tg?.ready();
+    tg?.expand();
+
+    function openTool(name) {
+      document.getElementById("message").textContent =
+        name + " — tez orada ishga tushadi!";
+      tg?.HapticFeedback?.impactOccurred("light");
+    }
+  </script>
+</body>
+</html>
