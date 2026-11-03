@@ -139,5 +139,47 @@
       tg?.HapticFeedback?.impactOccurred("light");
     }
   </script>
+<div id="ai-chat" style="display:none; margin-top:20px; background:#141a30; padding:15px; border-radius:16px;">
+  <h2>🤖 AI Chat</h2>
+  <div id="chat-messages" style="min-height:150px; color:white; margin-bottom:15px;">
+    Salom! Men AI Tools yordamchisiman.
+  </div>
+  <input id="chat-input" placeholder="Xabaringizni yozing..."
+    style="width:100%; padding:13px; border-radius:10px; border:0; margin-bottom:10px;">
+  <button onclick="sendMessage()"
+    style="width:100%; padding:13px; background:#20d9ff; border:0; border-radius:10px;">
+    Yuborish
+  </button>
+</div>
+
+<script>
+function openTool(name) {
+  if (name === 'AI Chat') {
+    document.getElementById('ai-chat').style.display = 'block';
+    document.getElementById('ai-chat').scrollIntoView();
+    return;
+  }
+  document.getElementById('message').textContent =
+    name + ' — tez orada ishga tushadi!';
+}
+
+function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const messages = document.getElementById('chat-messages');
+  const value = input.value.trim();
+
+  if (!value) return;
+
+  messages.innerHTML += '<p>👤 ' + escapeText(value) + '</p>';
+  messages.innerHTML += '<p>🤖 AI xizmati hali ulanmagan. Tez orada!</p>';
+  input.value = '';
+}
+
+function escapeText(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+</script>
 </body>
 </html>
